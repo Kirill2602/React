@@ -1,0 +1,20 @@
+.msgTxt {
+    color: green;
+    transition: 0.5s;
+}
+
+.msgTxt:hover {
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.msgTxt2 {
+    color: yellow;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.msgTxt2:hover {
+    color: white;
+}
