@@ -1,10 +1,39 @@
 .App {
   text-align: center;
 }
-
+.wrap{
+  border: 1px solid #000;
+  background-color: aqua;
+  width: 600px;
+  height: 500px;
+  position: relative;
+  overflow-y: scroll;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.mess{
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 200px;
+  word-wrap: break-word;
+}
+.author{
+  color: #aeaeae;
+  font-size: 10px;
+}
+.time{
+  color: #aeaeae;
+  font-size: 8px;
+}
+.authorText{
+  margin-left: 375px;
+}
+.messText{
+  color: black;
+  font-size: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -1,0 +1,12 @@
+form{
+    position: sticky;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -21px;
+}
+input{
+    outline: none;
+    cursor: pointer;
+    border: 2px solid yellow;
+    border-radius: 5px;
+}
