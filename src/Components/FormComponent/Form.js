@@ -1,24 +1,30 @@
 import "./form.css"
-import {useState} from "react";
+import {useState, useRef, useEffect} from "react";
+import {Button} from "@mui/material";
+import {FormControl} from "react-bootstrap";
 
-export const MessForm = ({cb}) => {
+export const MessForm = ({getMessage}) => {
     const [value, setValue] = useState('');
-    const handleChange = ({target:{value}}) => {
+    const ref = useRef(null);
+    const handleChange = ({target: {value}}) => {
         setValue(value);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        cb(value);
-        console.log(value)
+        getMessage(value);
+        ref.current.focus();
         setValue('');
     }
+    useEffect(() => {
+        ref.current.focus();
+    }, [])
 
     return (
         <form className="form" onSubmit={handleSubmit}>
             <div className="inputs">
-                <input placeholder="Введите сообщение" type="text" value={value} onChange={handleChange}/>
-                <input value='Отправить' type="submit"/>
+                <FormControl placeholder="Введите сообщение" ref={ref} value={value} onChange={handleChange} className='inp'/>
+                <Button variant="contained" type='submit'>Отправить</Button>
             </div>
         </form>
     )
