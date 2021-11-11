@@ -1,54 +1,12 @@
-.App {
-  text-align: center;
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 20px;
+.linkList{
+    display: flex;
+    justify-content: space-around;
 }
-.ChatL{
-  width: 250px;
+.liStyle{
+    list-style-type: none;
 }
-
-.wrap{
-  border: 1px solid #000;
-  background-color: #5959ad;
-  width: 600px;
-  height: 500px;
-  position: relative;
-}
-.mess{
-  background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 5px;
-  width: 200px;
-  word-wrap: break-word;
-  margin-left: 25px;
-}
-.author{
-  color: #aeaeae;
-  font-size: 10px;
-}
-.time{
-  color: #aeaeae;
-  font-size: 8px;
-}
-.authorText{
-  margin-left: 370px;
-}
-.messText{
-  color: black;
-  font-size: 20px;
-}
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-
+.link{
+    text-decoration: none;
+    font-size: 24px;
+    color: blueviolet;
 }

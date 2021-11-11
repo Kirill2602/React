@@ -2,6 +2,7 @@ import "./form.css"
 import {useState, useRef, useEffect} from "react";
 import {Button} from "@mui/material";
 import {FormControl} from "react-bootstrap";
+import {useParams} from "react-router-dom";
 
 export const MessForm = ({getMessage}) => {
     const [value, setValue] = useState('');
@@ -9,6 +10,7 @@ export const MessForm = ({getMessage}) => {
     const handleChange = ({target: {value}}) => {
         setValue(value);
     }
+    const {chatId} = useParams()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,6 +21,10 @@ export const MessForm = ({getMessage}) => {
     useEffect(() => {
         ref.current.focus();
     }, [])
+
+    useEffect(()=>{
+        ref.current.focus()
+    },[chatId])
 
     return (
         <form className="form" onSubmit={handleSubmit}>
