@@ -1,0 +1,12 @@
+.profile__header{
+    font-size: 50px;
+}
+.profile{
+    text-align: center;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #282c34;
+}
+.pointer{
+    cursor: pointer;
+}
