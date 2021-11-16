@@ -2,13 +2,17 @@ import React from "react";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import {Home} from "./Components/Home/HomeComponent";
 import Chats from "../src/Components/Chats/Chats";
+import {Provider} from "react-redux";
 import {Profile} from "./Components/Profile/Profile";
 import {Err} from "./Components/404/404"
 import './App.css';
 import {ChatList} from "./Components/ChatList/ChatList";
+import {store} from "./Components/store";
 
 export const App = () => {
-    return <BrowserRouter>
+    return(
+        <Provider store={store}>
+        <BrowserRouter>
         <ul className="linkList">
             <li className="liStyle">
                 <Link className="link" to="/">Home</Link>
@@ -30,4 +34,6 @@ export const App = () => {
             <Route path="*" element={<Err/>}/>
         </Routes>
     </BrowserRouter>
+    </Provider>
+);
 }
