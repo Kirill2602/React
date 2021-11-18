@@ -1,0 +1,25 @@
+.ChatHeader{
+ color: blueviolet;
+}
+.chatList{
+ background-color: darkslateblue;
+ color: white;
+}
+.chatListBlock{
+ background-color: #282c34;
+ min-height: 100vh;
+}
+.choiceChat{
+ color: yellow;
+ text-align: center;
+}
+.addBtn{
+ border-radius: 5px;
+ padding: 3px;
+ color: blueviolet;
+ cursor: pointer;
+ background-color: yellow;
+}
+.delete{
+ margin-left: 5px;
+}
