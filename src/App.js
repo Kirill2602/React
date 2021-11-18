@@ -18,10 +18,10 @@ export const App = () => {
                 <Link className="link" to="/">Home</Link>
             </li>
             <li className="liStyle">
-                <Link className="link" to="chats">Chats</Link>
+                <Link className="link" to="/chats">Chats</Link>
             </li>
             <li className="liStyle">
-                <Link className="link" to="profile">Profile</Link>
+                <Link className="link" to="/profile">Profile</Link>
             </li>
         </ul>
         <Routes>
@@ -30,8 +30,9 @@ export const App = () => {
                 <Route index element={<ChatList text="Выберете чат"/>}/>
                 <Route path=":chatId" element={<Chats/>}/>
             </Route>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="profile" element={<Profile/>}/>
             <Route path="*" element={<Err/>}/>
+            <Route path="" element={<Err/>}/>
         </Routes>
     </BrowserRouter>
     </Provider>

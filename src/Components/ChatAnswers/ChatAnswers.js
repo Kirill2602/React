@@ -37,5 +37,25 @@ export const ChatsAnswer = {
             text: 'Привет от Ивана!',
             time: getTime()
         }
-    ]
+    ],
 }
+
+
+export const chats = [
+    {
+        id: 'chatRobot',
+        name: 'Robot'
+    },
+    {
+        id: 'chatRoman',
+        name: 'Roman'
+    },
+    {
+        id: 'chatAmir',
+        name: 'Amir'
+    },
+    {
+        id: 'chatIvan',
+        name: 'Ivan'
+    }
+];

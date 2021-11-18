@@ -22,14 +22,15 @@ export const MessForm = ({getMessage}) => {
         ref.current.focus();
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         ref.current.focus()
-    },[chatId])
+    }, [chatId])
 
     return (
         <form className="form" onSubmit={handleSubmit}>
             <div className="inputs">
-                <FormControl placeholder="Введите сообщение" ref={ref} value={value} onChange={handleChange} className='inp'/>
+                <FormControl placeholder="Введите сообщение" ref={ref} value={value} onChange={handleChange}
+                             className='inp'/>
                 <Button variant="contained" type='submit'>Отправить</Button>
             </div>
         </form>

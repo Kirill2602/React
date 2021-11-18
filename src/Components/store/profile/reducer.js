@@ -7,15 +7,15 @@ const initialState = {
 };
 
 export const profileReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case TOGGLE_CHECKBOX:
             return {
                 ...state,
                 checkbox: !state.checkbox,
-                color: state.checkbox? state.color = 'blueviolet' : state.color = 'yellow'
-    }
-        ;
-    default:
-        return state;
+                color: state.checkbox ? 'blueviolet' : 'yellow'
+            }
+                ;
+        default:
+            return state;
     }
 };

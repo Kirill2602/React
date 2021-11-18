@@ -1,24 +1,27 @@
 import './chats.css';
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {MessForm} from "../FormComponent/Form";
 import {ChatList} from "../ChatList/ChatList";
 import ReactScrollableFeed from "react-scrollable-feed";
-import {useParams} from "react-router-dom";
-import {ChatsAnswer, getTime} from "../ChatAnswers/ChatAnswers";
+import {Navigate, useParams} from "react-router-dom";
+import {getTime} from "../ChatAnswers/ChatAnswers";
+import {useDispatch, useSelector} from "react-redux";
+import {add_message} from "../store/messages/actions";
+import {selectMessages} from "../store/messages/selectors";
 
 function Chats() {
     const {chatId} = useParams();
-    const [messages, setMessages] = useState({
-        chatRobot: [],
-        chatRoman: [],
-        chatAmir: [],
-        chatIvan: []
-    });
+    const messages = useSelector(selectMessages)
+    const name = useSelector(state => state.chats.find(({id}) => id === chatId)?.name)
+    const id = useSelector(state => state.chats.find(({id}) => id === chatId)?.id)
+    const dispatch = useDispatch()
+
     const getMessage = (value) => {
         if (value !== '') {
-            setMessages({...messages,[chatId]:[...messages[chatId], {id: `id-${Date.now()}`, author: 'Author', text: value, time: getTime()}]})
+            dispatch(add_message({id: chatId, author: 'Author', text: value, time: getTime()}))
         }
     }
+
     const getLastAuthor = () => {
         if (messages[chatId]?.length >= 1) {
             return messages[chatId][messages[chatId]?.length - 1].author;
@@ -28,13 +31,15 @@ function Chats() {
     useEffect(() => {
         if (getLastAuthor() === 'Author') {
             const timeout = setTimeout(() => {
-                setMessages({...messages,[chatId]:[...messages[chatId], ChatsAnswer[chatId][0]]})
+                dispatch(add_message({id: chatId, author: name, text: `Привет от ${name}`, time: getTime()}))
             }, 1500);
             return () => clearTimeout(timeout)
         }
     }, [messages])
 
-
+    if (!id) {
+        return <Navigate replace to="/chats"/>;
+    }
     return (
         <div className="Chats">
             <div className="ChatL">
@@ -42,7 +47,7 @@ function Chats() {
             </div>
             <div className="wrap">
                 <ReactScrollableFeed>
-                    {messages[chatId]?.map(({id, author, text, time}) =>
+                    {messages[chatId]?.map(({author, text, time}) =>
                         <div className={'mess ' + (author === 'Author' ? 'authorText' : '')} key={Math.random()}>
                             <h1 className="author">{author}</h1>
                             <h2 className="messText">{text}</h2>
