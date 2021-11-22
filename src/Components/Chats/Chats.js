@@ -1,12 +1,11 @@
 import './chats.css';
-import {useEffect} from "react";
 import {MessForm} from "../FormComponent/Form";
 import {ChatList} from "../ChatList/ChatList";
 import ReactScrollableFeed from "react-scrollable-feed";
 import {Navigate, useParams} from "react-router-dom";
 import {getTime} from "../ChatAnswers/ChatAnswers";
 import {useDispatch, useSelector} from "react-redux";
-import {add_message} from "../store/messages/actions";
+import {addMessageWithReply} from "../store/messages/actions";
 import {selectMessages} from "../store/messages/selectors";
 
 function Chats() {
@@ -18,24 +17,11 @@ function Chats() {
 
     const getMessage = (value) => {
         if (value !== '') {
-            dispatch(add_message({id: chatId, author: 'Author', text: value, time: getTime()}))
+            dispatch(addMessageWithReply(
+                {id: chatId, author: 'Author', text: value, time: getTime()},
+                {id: chatId, author: name, text: `Привет от ${name}`, time: getTime()}))
         }
     }
-
-    const getLastAuthor = () => {
-        if (messages[chatId]?.length >= 1) {
-            return messages[chatId][messages[chatId]?.length - 1].author;
-        }
-    }
-
-    useEffect(() => {
-        if (getLastAuthor() === 'Author') {
-            const timeout = setTimeout(() => {
-                dispatch(add_message({id: chatId, author: name, text: `Привет от ${name}`, time: getTime()}))
-            }, 1500);
-            return () => clearTimeout(timeout)
-        }
-    }, [messages])
 
     if (!id) {
         return <Navigate replace to="/chats"/>;
