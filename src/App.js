@@ -10,6 +10,7 @@ import './App.css';
 import {ChatList} from "./Components/ChatList/ChatList";
 import {persistor, store} from "./Components/store";
 import {CircularProgress} from "@mui/material";
+import {Users} from "./Components/Users/Users";
 
 export const App = () => {
     return (
@@ -26,6 +27,9 @@ export const App = () => {
                         <li className="liStyle">
                             <Link className="link" to="/profile">Profile</Link>
                         </li>
+                        <li className="liStyle">
+                            <Link className="link" to="/users">Users</Link>
+                        </li>
                     </ul>
                     <Routes>
                         <Route path="/" element={<Home/>}/>
@@ -34,6 +38,7 @@ export const App = () => {
                             <Route path=":chatId" element={<Chats/>}/>
                         </Route>
                         <Route path="profile" element={<Profile/>}/>
+                        <Route path="users" element={<Users/>}/>
                         <Route path="*" element={<Err/>}/>
                         <Route path="" element={<Err/>}/>
                     </Routes>

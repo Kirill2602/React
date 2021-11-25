@@ -1,0 +1,27 @@
+.usersCard {
+    text-align: center;
+}
+
+.user__header {
+    font-size: 50px;
+    color: blueviolet;
+}
+
+.users {
+    text-align: center;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #282c34;
+}
+
+.card__header {
+    color: yellow;
+}
+
+p {
+    color: lightblue;
+}
+span{
+    font-size: larger;
+    color: #5959ad;
+}

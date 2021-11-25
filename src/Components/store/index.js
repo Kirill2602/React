@@ -6,12 +6,14 @@ import thunk from "redux-thunk";
 import {profileReducer} from "./profile/reducer";
 import {chatsReducer} from "./chats/reducer";
 import {messageReducer} from "./messages/reducer";
+import {usersReducer} from "./users/reducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const persistConfig = {
     key: 'HW_7',
     storage,
+    blacklist:['users']
 }
 
 const persistedReducer = persistReducer(
@@ -19,7 +21,8 @@ const persistedReducer = persistReducer(
     combineReducers({
         chats: chatsReducer,
         profile: profileReducer,
-        messages: messageReducer
+        messages: messageReducer,
+        users: usersReducer
     }))
 export const store = createStore(
     persistedReducer,

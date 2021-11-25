@@ -3,7 +3,7 @@ import "./chatListStyle.css";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useCallback, useState} from "react";
-import {add_chat, delete_chat} from "../store/chats/actions";
+import {add_chat, delMessAfterDelChat} from "../store/chats/actions";
 import {selectChat} from "../store/chats/selectors";
 
 export const ChatList = ({text}) => {
@@ -11,7 +11,7 @@ export const ChatList = ({text}) => {
     const chat = useSelector(selectChat)
     const [value, setValue] = useState('')
 
-    const inputTextHandler = ({target:{value}}) => {
+    const inputTextHandler = ({target: {value}}) => {
         setValue(value)
     }
 
@@ -24,10 +24,8 @@ export const ChatList = ({text}) => {
         }
     }, [dispatch, value])
 
-    const deleteChatHandler = useCallback(({target:{value}}) => {
-        if (dispatch(delete_chat(value))){
-
-        }
+    const deleteChatHandler = useCallback(({target: {value}}) => {
+        dispatch(delMessAfterDelChat(value))
     }, [dispatch, value, chat])
 
     return (
