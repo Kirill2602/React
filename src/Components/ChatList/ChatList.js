@@ -2,14 +2,33 @@ import * as React from 'react';
 import "./chatListStyle.css";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {useCallback, useState} from "react";
-import {add_chat, delMessAfterDelChat} from "../store/chats/actions";
+import {useCallback, useEffect, useState} from "react";
+import {
+    addChatWithFb,
+    initChatsTracking,
+    removeMessageAfterChatFb
+} from "../store/chats/actions";
 import {selectChat} from "../store/chats/selectors";
+// import {onValue, set} from "firebase/database";
+// import {chatsRef, getChatMsgsRefById, getChatRefById} from "../../servises/firebase";
 
 export const ChatList = ({text}) => {
+    // const [chats, setChats] = useState([])
     const dispatch = useDispatch();
     const chat = useSelector(selectChat)
     const [value, setValue] = useState('')
+
+    useEffect(() => {
+        // onValue(chatsRef, (chatsSnap)=>{
+        //     //console.log(snapshot)
+        //     const newChats = []
+        //     chatsSnap.forEach((snapshot)=>{
+        //         newChats.push(snapshot.val())
+        //     })
+        //     setChats(newChats)
+        // })
+        dispatch(initChatsTracking())
+    }, [])
 
     const inputTextHandler = ({target: {value}}) => {
         setValue(value)
@@ -17,16 +36,20 @@ export const ChatList = ({text}) => {
 
     const addChatHandler = useCallback((e) => {
         e.preventDefault();
-        const id = Math.random()
+        const id = `chat${Date.now()}`
         if (value) {
-            dispatch(add_chat({id: `id${id}`, name: value}))
+            dispatch(addChatWithFb({name: value, id: id}))
             setValue('')
+            //     dispatch(add_chat({id: `id${id}`, name: value}))
         }
-    }, [dispatch, value])
+        // set(getChatRefById(id), {id: `id${id}`, name: value})
+        // set(getChatMsgsRefById(id), {empty:true})
+    }, [value])
 
     const deleteChatHandler = useCallback(({target: {value}}) => {
-        dispatch(delMessAfterDelChat(value))
-    }, [dispatch, value, chat])
+        //dispatch(delMessAfterDelChat(value))
+        dispatch(removeMessageAfterChatFb(value))
+    }, [value, chat])
 
     return (
         <div className="chatListBlock">
