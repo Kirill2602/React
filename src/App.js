@@ -48,7 +48,6 @@ export const App = () => {
     }, []);
 
     return (
-
         <PersistGate persistor={persistor} loading={<CircularProgress/>}>
             <BrowserRouter>
                 <ul className="linkList">

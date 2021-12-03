@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
-import { Navigate} from "react-router";
-import { selectAuth } from "../store/profile/selectors"
+import {useSelector} from "react-redux";
+import {Navigate} from "react-router";
+import {selectAuth} from "../store/profile/selectors"
 
-export const PrivateRoute = ({ children }) => {
+export const PrivateRoute = ({children}) => {
     const authed = useSelector(selectAuth);
 
-    return authed ? children : <Navigate to="/" replace />;
+    return authed ? children : <Navigate to="/" replace/>;
 };

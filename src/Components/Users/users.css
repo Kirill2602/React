@@ -4,7 +4,7 @@
 
 .user__header {
     font-size: 50px;
-    color: blueviolet;
+    color: yellow;
 }
 
 .users {
@@ -23,5 +23,5 @@ p {
 }
 span{
     font-size: larger;
-    color: #5959ad;
+    color: yellow;
 }

@@ -4,7 +4,7 @@ import {logIn} from "../../servises/firebase";
 import {SignForm} from "../SignForm";
 import {Link} from "react-router-dom";
 
-export const Home = ()=>{
+export const Home = () => {
 
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ export const Home = ()=>{
     return (
         <div className="home">
             <h3 className="home__header">HOME</h3>
-            <SignForm onSubmit={handleSignIn} error={error} loading={loading} />
+            <SignForm onSubmit={handleSignIn} error={error} loading={loading}/>
             <Link className="home__link" to="/signup">Sign Up</Link>
         </div>
     );

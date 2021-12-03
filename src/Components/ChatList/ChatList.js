@@ -54,7 +54,7 @@ export const ChatList = ({text}) => {
     return (
         <div className="chatListBlock">
             <h1 className="choiceChat">{text}</h1>
-            <h3 className="ChatHeader">Chat List</h3>
+            <h2 className="сhatHeader">Chat List</h2>
             <ul>
                 {chat.map(({id, name}) => (
                     <li key={id}>

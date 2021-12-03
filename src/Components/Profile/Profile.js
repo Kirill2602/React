@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "./profile.css"
 import {toggleCheckbox} from "../store/profile/actions";
 import {useDispatch, useSelector} from "react-redux";
@@ -6,21 +6,21 @@ import {selectCheckbox, selectColor, selectName} from "../store/profile/selector
 import {logOut} from "../../servises/firebase";
 
 export const Profile = () => {
-    const checkboxValue = useSelector(selectCheckbox)
-    const name = useSelector(selectName)
-    const color = useSelector(selectColor)
-    const dispatch = useDispatch()
+        const checkboxValue = useSelector(selectCheckbox)
+        const name = useSelector(selectName)
+        const color = useSelector(selectColor)
+        const dispatch = useDispatch()
 
-    const handleChange = () => {
-        dispatch(toggleCheckbox)
-    }
-    const handleLogOutClick = async () => {
-        try {
-            await logOut();
-        } catch (err) {
-            console.log(err);
+        const handleChange = () => {
+            dispatch(toggleCheckbox)
         }
-    };
+        const handleLogOutClick = async () => {
+            try {
+                await logOut();
+            } catch (err) {
+                console.log(err);
+            }
+        }
 
     return (
         <div className="profile">

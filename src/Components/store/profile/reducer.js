@@ -7,8 +7,8 @@ const initialState = {
     authed: false,
 };
 
-export const profileReducer = (state = initialState, action) => {
-    switch (action.type) {
+export const profileReducer = (state = initialState, {type}) => {
+    switch (type) {
         case TOGGLE_CHECKBOX:
             return {
                 ...state,
